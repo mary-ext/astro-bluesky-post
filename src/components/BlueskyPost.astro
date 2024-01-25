@@ -1,6 +1,7 @@
 ---
 import * as core from 'bluesky-post-embed/core';
-import stylesUrl from 'bluesky-post-embed/style.css?url';
+// import stylesUrl from 'bluesky-post-embed/style.css?url';
+import styles from 'bluesky-post-embed/style.css?inline';
 
 interface Props {
 	src: string;
@@ -15,7 +16,8 @@ const template = core.render(data, contextless);
 
 <bluesky-post theme="light">
 	<template shadowrootmode="open">
-		<link rel="stylesheet" href={stylesUrl} />
+		<!-- <link rel="stylesheet" href={stylesUrl} /> -->
+		<style set:html={styles}></style>
 		<Fragment set:html={template.value} />
 	</template>
 </bluesky-post>
