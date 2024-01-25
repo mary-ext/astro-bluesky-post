@@ -1,0 +1,36 @@
+---
+import * as core from 'bluesky-post-embed/core';
+import stylesUrl from 'bluesky-post-embed/style.css?url';
+
+interface Props {
+	src: string;
+	contextless?: boolean;
+}
+
+const { src, contextless = false } = Astro.props;
+
+const data = await core.get(src, contextless);
+const template = core.render(data, contextless);
+---
+
+<bluesky-post theme="light">
+	<template shadowrootmode="open">
+		<link rel="stylesheet" href={stylesUrl} />
+		<Fragment set:html={template.value} />
+	</template>
+</bluesky-post>
+
+<script>
+	const dark = matchMedia('(prefers-color-scheme: dark)');
+
+	const update_theme = () => {
+		const is_dark = dark.matches;
+
+		for (const node of document.querySelectorAll('bluesky-post')) {
+			node.setAttribute('theme', !is_dark ? 'light' : 'dark');
+		}
+	};
+
+	update_theme();
+	dark.addEventListener('change', update_theme);
+</script>

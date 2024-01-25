@@ -1,0 +1,35 @@
+---
+import BlueskyPost from '../../../components/BlueskyPost.astro';
+import Layout from '../../../layouts/Layout.astro';
+
+const { actor, rkey } = Astro.params;
+const url = `https://bsky.app/profile/${actor}/post/${rkey}`;
+
+Astro.response.headers.set('Cache-Control', 'public, s-maxage=900, stale-while-revalidate=60');
+---
+
+<Layout title="Static Bluesky post embeds">
+	<main>
+		<h1>Statically generated Bluesky post embeds</h1>
+		<BlueskyPost src={url} />
+	</main>
+</Layout>
+
+<style>
+	main {
+		margin: auto;
+		padding: 1rem;
+		width: 800px;
+		max-width: calc(100% - 2rem);
+		color: white;
+		font-size: 20px;
+		line-height: 1.6;
+	}
+	h1 {
+		margin-bottom: 1em;
+		font-weight: 700;
+		font-size: 1.25rem;
+		line-height: 1;
+		text-align: center;
+	}
+</style>

@@ -1,0 +1,25 @@
+{
+	"name": "lonely-luminosity",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro check && astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"fmt": "prettier --cache --write ."
+	},
+	"dependencies": {
+		"@astrojs/check": "^0.4.1",
+		"@astrojs/cloudflare": "^9.0.0",
+		"astro": "^4.2.4",
+		"bluesky-post-embed": "^0.1.2",
+		"typescript": "^5.3.3"
+	},
+	"devDependencies": {
+		"prettier": "^3.2.4",
+		"prettier-plugin-astro": "^0.13.0",
+		"prettier-plugin-css-order": "^2.0.1"
+	}
+}
